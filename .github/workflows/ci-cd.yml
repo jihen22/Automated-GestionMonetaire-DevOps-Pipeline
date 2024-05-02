@@ -57,4 +57,4 @@ jobs:
         settings-path: ${{ github.workspace }}  # assuming Maven settings.xml is in the project root
 
     - name: Run tests with Maven
-      run: mvn test  # adjust the Maven command as per your project setup
+      run: mvn test  # adjust the Maven command as per your project setup   
