@@ -19,8 +19,14 @@ jobs:
       - name: Set up Maven
         run: |
           curl -L -o apache-maven.zip https://apache.osuosl.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip
-          Expand-Archive -Path apache-maven.zip -DestinationPath .
-          $env:PATH += ";$(pwd)/apache-maven-3.8.4/bin"
+          Expand-Archive -Path apache-maven.zip -DestinationPath . -Force
+          if ($?) {
+            Write-Host "Maven setup successful"
+            $env:PATH += ";$(pwd)/apache-maven-3.8.4/bin"
+          } else {
+            Write-Host "Failed to set up Maven"
+            exit 1
+          }
 
       - name: Build application
         run: mvn compile
