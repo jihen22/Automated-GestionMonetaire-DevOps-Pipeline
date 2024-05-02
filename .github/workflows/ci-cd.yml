@@ -19,14 +19,14 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # adjust this to your Java version
+        java-version: '21'  # adjust this to your Java version
         distribution: 'adopt'
         javaHome: 'C:\\jdk-21'  # path to your JDK installation
 
     - name: Set up Maven
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # adjust this to your Java version
+        java-version: '21'  # adjust this to your Java version
         distribution: 'adopt'
         server-id: repo
         settings-path: ${{ github.workspace }}  # assuming Maven settings.xml is in the project root
@@ -44,14 +44,14 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # adjust this to your Java version
+        java-version: '21'  # adjust this to your Java version
         distribution: 'adopt'
         javaHome: 'C:\\jdk-21'  # path to your JDK installation
 
     - name: Set up Maven
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # adjust this to your Java version
+        java-version: '21'  # adjust this to your Java version
         distribution: 'adopt'
         server-id: repo
         settings-path: ${{ github.workspace }}  # assuming Maven settings.xml is in the project root
