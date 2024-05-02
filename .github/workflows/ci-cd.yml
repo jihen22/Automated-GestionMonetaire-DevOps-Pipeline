@@ -12,14 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Configure IntelliJ IDEA
-        run: |
-          setx PATH "%PATH%;C:\Program Files\JetBrains\IntelliJ IDEA\bin"
-
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
           java-version: '11'
 
       - name: Build application
@@ -39,4 +34,3 @@ jobs:
       - name: Deploy to production
         run: |
           # Add commands to deploy your application to production servers here
-
