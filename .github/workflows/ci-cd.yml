@@ -18,8 +18,8 @@ jobs:
 
       - name: Set up Maven
         run: |
-          curl -L -o apache-maven.tar.gz https://apache.osuosl.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
-          tar xf apache-maven.tar.gz
+          curl -L -o apache-maven.zip https://apache.osuosl.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip
+          Expand-Archive -Path apache-maven.zip -DestinationPath .
           $env:PATH += ";$(pwd)/apache-maven-3.8.4/bin"
 
       - name: Build application
@@ -39,10 +39,3 @@ jobs:
       - name: Deploy to production
         run: |
           # Add commands to deploy your application to production servers here
-          # Run curl -L -o apache-maven.tar.gz https://apache.osuosl.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
-          # ParserError: D:\a\_temp\f08b9926-0bf3-4ae3-abfd-51214224ebfa.ps1:4
-          # Line |
-          #    4 |  export PATH=$PATH:$(pwd)/apache-maven-3.8.4/bin
-          #      |              ~~~~~~
-          #      | Variable reference is not valid. ':' was not followed by a valid variable name character. Consider using ${} to
-          #      | delimit the name.
