@@ -1,37 +1,60 @@
-name: CI/CD Pipeline
+name: pipeline CI/CD
+
 on:
   push:
     branches:
-      - main
+      - main  # adjust this to your main branch name
+  pull_request:
+    branches:
+      - main  # adjust this to your main branch name
 
 jobs:
   build:
-    name: Build and Test
-    runs-on: windows-latest
+    runs-on: windows-latest  # using Windows environment
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # adjust this to your Java version
+        distribution: 'adopt'
+        javaHome: 'C:\\jdk-21'  # path to your JDK installation
 
-      - name: Build application
-        run: mvn compile
+    - name: Set up Maven
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # adjust this to your Java version
+        distribution: 'adopt'
+        server-id: repo
+        settings-path: ${{ github.workspace }}  # assuming Maven settings.xml is in the project root
 
-      - name: Test
-        run: mvn test
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml  # adjust the Maven command as per your project setup
 
-  deploy:
-    name: Deploy to Production
-    needs: [build]
+  test:
     runs-on: windows-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
-      - name: Deploy to production
-        run: |
-          # Add commands to deploy your application to production servers here
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # adjust this to your Java version
+        distribution: 'adopt'
+        javaHome: 'C:\\jdk-21'  # path to your JDK installation
+
+    - name: Set up Maven
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # adjust this to your Java version
+        distribution: 'adopt'
+        server-id: repo
+        settings-path: ${{ github.workspace }}  # assuming Maven settings.xml is in the project root
+
+    - name: Run tests with Maven
+      run: mvn test  # adjust the Maven command as per your project setup
