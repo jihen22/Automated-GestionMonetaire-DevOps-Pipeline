@@ -1,2 +1,2 @@
-# Description:
-Ce répertoire a été créé dans le cadre d'un travail pratique visant à comprendre et à mettre en œuvre une pipeline DevOps automatisée pour l'application Gestion Monetaire. L'objectif principal est d'intégrer des tests automatisés à chaque étape du processus de développement.
+#Description:
+This repository was created as part of a practical assignment focused on understanding and implementing an automated DevOps pipeline for the Monetary Management application. The primary objective is to integrate automated testing at every stage of the development process.
